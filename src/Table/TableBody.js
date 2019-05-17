@@ -66,7 +66,7 @@ export default {
         return this.table.$emit('checkbox-click', latestData[rowIndex], column, columnIndex, $event);
       }
       // Tree's icon
-      if (certainType.icon) {
+      if (certainType.row && eventType === 'click') {
         $event.stopPropagation();
         this.toggleStatus('Fold', row, rowIndex);
         const childrenIndex = this.getChildrenIndex(row._level, rowIndex);
@@ -214,14 +214,14 @@ export default {
           class={ `${this.prefixCls}--level-${row._level}-cell` }
           style={{
             marginLeft: `${(row._level - 1) * 24}px`,
-            paddingLeft: row._childrenLen === 0 ? '20px' : '',
           }}>
-            { row._childrenLen > 0 &&
-              <i
-                class={ `${this.prefixCls}--tree-icon zk-icon zk-icon-${row._isFold ? 'plus' : 'minus'}-square-o`}
-                on-click={ $event => this.handleEvent($event, 'icon', { row, rowIndex, column, columnIndex }, { isFold: row._isFold }) }></i>
-            }
             { row[column.prop] ? row[column.prop] : '' }
+            { row._childrenLen > 0 &&
+            <i
+              class={ `${this.prefixCls}--tree-icon zk-icon zk-icon-${row._isFold ? 'plus' : 'minus'}-square-o`}
+              style={{ marginLeft: '10px' }}
+              on-click={ $event => this.handleEvent($event, 'icon', { row, rowIndex, column, columnIndex }, { isFold: row._isFold }) }></i>
+            }
         </span>;
       }
       // TreeType children's index

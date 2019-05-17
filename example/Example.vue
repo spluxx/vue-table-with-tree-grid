@@ -22,7 +22,7 @@
          }}
       </template>
       <template slot="likes" scope="scope">
-        <input type="file" v-on:change="fileChanged($event, scope.row.files)" accept="image/*" multiple/>
+        <input type="button" v-on:change="fileChanged($event, scope.row.files)" accept="image/*" multiple/>
         {{ scope.row.likes.join(',') }}
       </template>
     </zk-table>
@@ -57,13 +57,13 @@
             sex: 'male',
             likes: ['football', 'basketball'],
             score: 10,
-            children: [
+            _children: [
               {
                 name: 'Ashley',
                 sex: 'female',
                 likes: ['football', 'basketball'],
                 score: 20,
-                children: [
+                _children: [
                   {
                     name: 'Ashley',
                     sex: 'female',
@@ -75,7 +75,7 @@
                     sex: 'male',
                     likes: ['football', 'basketball'],
                     score: 10,
-                    children: [
+                    _children: [
                       {
                         name: 'Ashley',
                         sex: 'female',

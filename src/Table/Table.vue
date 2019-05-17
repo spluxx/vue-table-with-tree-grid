@@ -172,7 +172,7 @@
       },
       childrenProp: {
         type: String,
-        default: 'children',
+        default: '_children',
       },
       isFold: {
         type: Boolean,

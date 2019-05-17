@@ -1,11 +1,5 @@
 <template lang="html">
   <div id="example">
-    <ul class="switch-list">
-      <li class="switch-item" v-for="item in propList">
-        <span>{{ item.name }}: </span>
-        <zk-switch v-model="props[item.name]"></zk-switch>
-      </li>
-    </ul>
     <zk-table
       ref="table"
       sum-text="sum"
@@ -28,6 +22,7 @@
          }}
       </template>
       <template slot="likes" scope="scope">
+        <input type="file" v-on:change="fileChanged($event, scope.row.files)" accept="image/*" multiple/>
         {{ scope.row.likes.join(',') }}
       </template>
     </zk-table>
@@ -227,7 +222,9 @@
       },
     },
     methods: {
-
+      fileChanged(evt, files) {
+        console.log(files);
+      },
     },
   };
 </script>

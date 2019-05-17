@@ -49,6 +49,8 @@ export default {
       return childrenIndex;
     },
     handleEvent($event, type, data, others) {
+      if (!$event.target.className) return '';
+
       const certainType = this.validateType(type, ['cell', 'row', 'checkbox', 'icon'], 'handleEvent');
       const eventType = $event ? $event.type : '';
       const { row, rowIndex, column, columnIndex } = data;

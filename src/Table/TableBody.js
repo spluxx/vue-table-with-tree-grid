@@ -19,10 +19,9 @@ export default {
     toggleStatus(type, row, rowIndex, value) {
       this.validateType(type, ['Expanded', 'Checked', 'Hide', 'Fold'], 'toggleStatus', false);
       const target = this.table.bodyData[rowIndex];
-      this.table.bodyData.splice(rowIndex, 1, {
-        ...target,
-        [`_is${type}`]: typeof value === 'undefined' ? !row[`_is${type}`] : value,
-      });
+      if (target) {
+        this.$set(target, `_is${type}`, typeof value === 'undefined' ? !row[`_is${type}`] : value);
+      }
     },
     getChildrenIndex(parentLevel, parentIndex, careFold = true) {
       const data = this.table.bodyData;

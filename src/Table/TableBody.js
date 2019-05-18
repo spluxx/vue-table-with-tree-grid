@@ -84,15 +84,6 @@ export default {
           return this.table.$emit('expand-cell-click', latestData[rowIndex], column, columnIndex, $event);
         }
       }
-      // 行：Hover
-      if (certainType.row && (eventType === 'mouseenter' || eventType === 'mouseleave')) {
-        const { hover } = others;
-        const target = latestData[rowIndex];
-        latestData.splice(rowIndex, 1, {
-          ...target,
-          _isHover: hover,
-        });
-      }
       if (certainType.cell) {
         return this.table.$emit(`${type}-${eventType}`, latestData[rowIndex], rowIndex, column, columnIndex, $event);
       }

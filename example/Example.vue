@@ -26,6 +26,8 @@
         {{ scope.row.likes.join(',') }}
       </template>
     </zk-table>
+
+    <button @click="deleteAll"> Delete All </button>
   </div>
 </template>
 
@@ -65,126 +67,36 @@
                 score: 20,
                 _children: [
                   {
-                    name: 'Ashley',
-                    sex: 'female',
-                    likes: ['football', 'basketball'],
-                    score: 20,
-                  },
-                  {
                     name: 'Taki',
                     sex: 'male',
                     likes: ['football', 'basketball'],
                     score: 10,
-                    _children: [
-                      {
-                        name: 'Ashley',
-                        sex: 'female',
-                        likes: ['football', 'basketball'],
-                        score: 20,
-                      },
-                      {
-                        name: 'Taki',
-                        sex: 'male',
-                        likes: ['football', 'basketball'],
-                        score: 10,
-                        children: [
-                          {
-                            name: 'Ashley',
-                            sex: 'female',
-                            likes: ['football', 'basketball'],
-                            score: 20,
-                          },
-                          {
-                            name: 'Taki',
-                            sex: 'male',
-                            likes: ['football', 'basketball'],
-                            score: 10,
-                          },
-                        ],
-                      },
-                    ],
-                  },
-                ],
-              },
-              {
-                name: 'Taki',
-                sex: 'male',
-                likes: ['football', 'basketball'],
-                score: 10,
-              },
-            ],
-          },
-          {
-            name: 'Tom',
-            sex: 'male',
-            likes: ['football', 'basketball'],
-            score: 20,
-            children: [
-              {
-                name: 'Ashley',
-                sex: 'female',
-                likes: ['football', 'basketball'],
-                score: 20,
-                children: [
-                  {
-                    name: 'Ashley',
-                    sex: 'female',
-                    likes: ['football', 'basketball'],
-                    score: 20,
-                  },
-                  {
-                    name: 'Taki',
-                    sex: 'male',
-                    likes: ['football', 'basketball'],
-                    score: 10,
-                  },
-                ],
-              },
-              {
-                name: 'Taki',
-                sex: 'male',
-                likes: ['football', 'basketball'],
-                score: 10,
-                children: [
-                  {
-                    name: 'Ashley',
-                    sex: 'female',
-                    likes: ['football', 'basketball'],
-                    score: 20,
-                  },
-                  {
-                    name: 'Taki',
-                    sex: 'male',
-                    likes: ['football', 'basketball'],
-                    score: 10,
+                    _children: [],
                   },
                 ],
               },
             ],
           },
           {
-            name: 'Tom',
+            name: 'Jack',
             sex: 'male',
             likes: ['football', 'basketball'],
-            score: 20,
-          },
-          {
-            name: 'Tom',
-            sex: 'male',
-            likes: ['football', 'basketball'],
-            score: 20,
-            children: [
+            score: 10,
+            _children: [
               {
                 name: 'Ashley',
                 sex: 'female',
                 likes: ['football', 'basketball'],
                 score: 20,
-              },
-              {
-                name: 'Taki',
-                sex: 'male',
-                likes: ['football', 'basketball'],
-                score: 10,
+                _children: [
+                  {
+                    name: 'Taki',
+                    sex: 'male',
+                    likes: ['football', 'basketball'],
+                    score: 10,
+                    _children: [],
+                  },
+                ],
               },
             ],
           },
@@ -224,6 +136,10 @@
     methods: {
       fileChanged(evt, files) {
         console.log(files);
+      },
+      deleteAll() {
+        this.data.splice(0, 1);
+        console.log(this.data);
       },
     },
   };
